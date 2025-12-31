@@ -1,0 +1,352 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #020617;
+  color: #e5e7eb;
+  overflow-x: hidden;
+}
+
+/* COLORS */
+:root {
+  --cyan: #00f5ff;
+  --green: #39ff14;
+  --purple: #7c3aed;
+}
+
+/* ================= HERO BACKGROUND UI ================= */
+.hero {
+  min-height: 100vh;
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* grid background */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 49%, rgba(0,245,255,0.06) 50%, transparent 51%),
+    linear-gradient(transparent 49%, rgba(124,58,237,0.06) 50%, transparent 51%);
+  background-size: 44px 44px;
+  animation: gridMove 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridMove {
+  to { background-position: 220px 220px; }
+}
+
+/* glow pulse */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0,245,255,0.08), transparent 70%);
+  animation: pulse 6s infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0%,100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+/* ================= PROFILE ================= */
+.profile-ring {
+  width: 260px;
+  height: 260px;
+  margin: auto;
+  position: relative;
+  filter: drop-shadow(0 0 20px var(--cyan));
+}
+
+.profile-ring img {
+  position: absolute;
+  inset: 40px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 3px solid var(--green);
+  z-index: 2;
+}
+
+/* rings */
+.ring {
+  position: absolute;
+  inset: 0;
+}
+
+.ring circle {
+  fill: none;
+  stroke-width: 6;
+  stroke-dasharray: 370;
+  stroke-dashoffset: 185;
+}
+
+.ring1 {
+  animation: spinCW 6s linear infinite;
+}
+.ring1 circle { stroke: var(--cyan); }
+
+.ring2 {
+  animation: spinCCW 4.5s linear infinite;
+}
+.ring2 circle { stroke: var(--purple); }
+
+@keyframes spinCW { to { transform: rotate(360deg); } }
+@keyframes spinCCW { to { transform: rotate(-360deg); } }
+
+/* ================= TEXT ================= */
+.name {
+  font-size: 44px;
+  margin-top: 32px;
+  color: var(--cyan);
+  text-shadow: 0 0 28px var(--cyan);
+}
+
+.edu-line {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.edu-line.focus {
+  color: var(--green);
+  text-shadow: 0 0 14px var(--green);
+}
+
+/* ================= SECTIONS ================= */
+.section {
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  width: 100%;
+  max-width: 900px;
+  padding: 30px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  box-shadow: 0 0 26px rgba(0,245,255,0.25);
+}
+
+.dual-color {
+  box-shadow:
+    0 0 0 1px var(--cyan),
+    0 0 25px rgba(124,58,237,0.35);
+}
+
+.box h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--cyan);
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  padding: 20px;
+  background: rgba(0,0,0,0.45);
+  border-radius: 14px;
+  border: 1px solid rgba(0,245,255,0.35);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 0 18px var(--cyan);
+}
+
+/* ================= CONTACT (ONLY GAP CHANGE) ================= */
+.contact {
+  flex-direction: column;
+  text-align: center;
+}
+
+/* 🔥 YAHI MAIN CHANGE HAI */
+.contact h2 {
+  margin-bottom: 40px;   /* thoda zyada gap */
+}
+
+.socials {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+}
+
+.socials a {
+  color: var(--cyan);
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.socials a:hover {
+  color: var(--purple);
+  text-shadow: 0 0 10px var(--purple);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+/* ================= FULL PAGE LOADER ================= */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #020617;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  font-family: Consolas, monospace;
+}
+
+.loader-box {
+  width: 320px;
+  text-align: center;
+}
+
+.loader-text {
+  color: #00f5ff;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 12px #00f5ff;
+}
+
+.loader-bar {
+  width: 100%;
+  height: 10px;
+  border: 1px solid #00f5ff;
+  overflow: hidden;
+}
+
+.loader-bar span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00f5ff, #39ff14);
+  box-shadow: 0 0 12px #00f5ff;
+  transition: width 0.1s linear;
+}
+
+.loader-percent {
+  margin-top: 12px;
+  color: #39ff14;
+  font-size: 14px;
+  text-shadow: 0 0 10px #39ff14;
+}
+/* ================= HACKER BOOT LOADER ================= */
+#boot-loader {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #020617, #000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  font-family: Consolas, monospace;
+}
+
+.boot-box {
+  width: 340px;
+  text-align: center;
+}
+
+.boot-title {
+  color: #00f5ff;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+  text-shadow: 0 0 14px #00f5ff;
+  animation: glitch 1.5s infinite;
+}
+
+@keyframes glitch {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+.boot-circle {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: auto;
+}
+
+.boot-circle svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.boot-circle circle {
+  fill: none;
+  stroke-width: 6;
+}
+
+.boot-circle circle:first-child {
+  stroke: rgba(0,245,255,0.15);
+}
+
+#boot-ring {
+  stroke: #00f5ff;
+  stroke-dasharray: 339;
+  stroke-dashoffset: 339;
+  filter: drop-shadow(0 0 10px #00f5ff);
+  transition: stroke-dashoffset 0.15s linear;
+}
+
+.boot-percent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #39ff14;
+  text-shadow: 0 0 12px #39ff14;
+}
+
+.boot-bar {
+  width: 100%;
+  height: 8px;
+  border: 1px solid #00f5ff;
+  margin-top: 22px;
+  overflow: hidden;
+}
+
+.boot-bar span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00f5ff, #39ff14);
+  box-shadow: 0 0 12px #00f5ff;
+}
+
+.boot-status {
+  margin-top: 16px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #39ff14;
+  text-shadow: 0 0 10px #39ff14;
+}
