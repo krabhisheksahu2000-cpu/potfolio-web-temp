@@ -4,13 +4,13 @@ document.querySelectorAll(".socials a").forEach(link => {
     const type = link.dataset.type;
 
     if (type === "instagram")
-      window.open("https://www.instagram.com/YOUR_USERNAME/", "_blank");
+      window.open("https://www.instagram.com/abh1shek_123/", "_blank");
 
     if (type === "gmail")
-      window.location.href = "mailto:YOUR_EMAIL@gmail.com";
+      window.location.href = "mailto:krabhisheksahu2000@gmail.com";
 
     if (type === "github")
-      window.open("https://github.com/YOUR_GITHUB", "_blank");
+      window.open("https://github.com/krabhisheksahu2000-cpu", "_blank");
 
     if (type === "linkedin")
       window.open("https://www.linkedin.com/in/YOUR_LINKEDIN/", "_blank");
@@ -63,3 +63,4 @@ const bootInterval = setInterval(() => {
     }, 600);
   }
 }, 35);
+
